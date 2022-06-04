@@ -21,8 +21,8 @@ export function GameListTemplate({ section }) {
   return (
     <ul className="carousel" aria-roledescription="Carrusel" aria-label={section.title}>
       {section.type === 'new' ?
-        section.list.map((game, index) => <li><GameCardNewTemplate game={game} index={index} /></li>)
-      : section.list.map(game => <li><GameCardTemplate game={game} /></li>)
+        section.list.map((game, index) => <li key={index}><GameCardNewTemplate game={game} index={index} /></li>)
+      : section.list.map((game, index) => <li key={index}><GameCardTemplate game={game} /></li>)
       }
     </ul>
   );

@@ -68,10 +68,10 @@ export default function Home({ sections, lcp }) {
       <div className="home">
         {sections.map((section, index) => (
           <>
-            <SectionTemplate section={section} />
-            {index === 0 && <notification-prompt hidden></notification-prompt>}
-            {index === 2 && <GamepassSection />}
-            {index === 5 && <GoldSection />}
+            <SectionTemplate section={section} key={section.type} />
+            {index === 0 && <notification-prompt hidden key={`notif-${index}`}></notification-prompt>}
+            {index === 2 && <GamepassSection key={`gamepass-${index}`} />}
+            {index === 5 && <GoldSection key={`gold-${index}`} />}
           </>
         ))}
       </div>

@@ -1,9 +1,11 @@
 import '../public/src/styles.css'
 
 import React, { useRef, useEffect, memo } from 'react'
-import Router, { useRouter } from 'next/router'
+// import Router, { useRouter } from 'next/router'
 import Head from 'next/head';
 import Link from 'next/link';
+import Script from 'next/script'
+
 
 // const ROUTES_TO_RETAIN = [
 //   '/cycle',
@@ -109,10 +111,12 @@ function Layout({ children }) {
       </Head>
       <header>
         <h1>
-          <a href="/">
-            <img src="/src/assets/favicon.png" width="25px" height="25px" alt="" />
-            XStore
-          </a>
+          <Link href="/">
+            <a>
+              <img src="/src/assets/favicon.png" width="25px" height="25px" alt="" />
+              XStore
+            </a>
+          </Link>
         </h1>
 
         <button
@@ -181,25 +185,31 @@ function Layout({ children }) {
         <nav>
           <ul>
             <li>
-              <a id="home" href="/" className="home-btn footer-btn" aria-label="Inicio">
-                <svg width="28" height="28" viewBox="0 0 980 980" aria-hidden="true" fill="#fff"><path d="M53 897c24 15 55 12 76-7 0 0 117-101 152-129 11-9 25-14 39-14h345c14 0 27 5 38 14 35 28 153 129 153 129 20 19 52 22 75 7 78-52 53-190 34-267-16-64-38-126-64-187-37-89-118-203-232-179-11 3-24 10-33 15-9 6-20 9-31 9h-73V118a40 40 0 1 0-80 0v170h-72c-11 0-22-3-32-9-9-5-22-12-33-15-113-24-195 90-232 179-25 61-47 123-63 187-19 77-45 215 33 267zm680-522a44 44 0 1 1 0 87 44 44 0 0 1 0-87zM630 502a44 44 0 1 1 0 87 44 44 0 0 1 0-87zm-432-49h51v-50a30 30 0 1 1 60 0v50h50a30 30 0 1 1 0 60h-50v51a30 30 0 1 1-60 0v-51h-51a30 30 0 1 1 0-60z"/></svg>
-              </a>
+              <Link href="/">
+                <a id="home" className="home-btn footer-btn" aria-label="Inicio">
+                  <svg width="28" height="28" viewBox="0 0 980 980" aria-hidden="true" fill="#fff"><path d="M53 897c24 15 55 12 76-7 0 0 117-101 152-129 11-9 25-14 39-14h345c14 0 27 5 38 14 35 28 153 129 153 129 20 19 52 22 75 7 78-52 53-190 34-267-16-64-38-126-64-187-37-89-118-203-232-179-11 3-24 10-33 15-9 6-20 9-31 9h-73V118a40 40 0 1 0-80 0v170h-72c-11 0-22-3-32-9-9-5-22-12-33-15-113-24-195 90-232 179-25 61-47 123-63 187-19 77-45 215 33 267zm680-522a44 44 0 1 1 0 87 44 44 0 0 1 0-87zM630 502a44 44 0 1 1 0 87 44 44 0 0 1 0-87zm-432-49h51v-50a30 30 0 1 1 60 0v50h50a30 30 0 1 1 0 60h-50v51a30 30 0 1 1-60 0v-51h-51a30 30 0 1 1 0-60z"/></svg>
+                </a>
+              </Link>
             </li>
             <li>
-              <a id="wishlist" href="/wishlist" className="link wish-btn footer-btn" aria-label="Favoritos">
-                <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" fill="#fff"><path d="M12 21.6C9.4 21.6 2 15 2 8.5c0-3 2.5-5.8 5.4-5.8 2.2 0 3.8 1.6 4.6 2.8.8-1.2 2.4-2.8 4.6-2.8 3 0 5.4 2.7 5.4 5.8 0 6.4-7.4 13-10 13.1z"/></svg>
-              </a>
+              <Link href="/wishlist">
+                <a id="wishlist" className="link wish-btn footer-btn" aria-label="Favoritos">
+                  <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" fill="#fff"><path d="M12 21.6C9.4 21.6 2 15 2 8.5c0-3 2.5-5.8 5.4-5.8 2.2 0 3.8 1.6 4.6 2.8.8-1.2 2.4-2.8 4.6-2.8 3 0 5.4 2.7 5.4 5.8 0 6.4-7.4 13-10 13.1z"/></svg>
+                </a>
+              </Link>
             </li>
             <li>
-              <a id="news" href="/news" className="link news-btn footer-btn" aria-label="Noticias">
-                <svg width="28" height="28" viewBox="-5 -5 32 32" aria-hidden="true" fill="#fff"><path d="M19.2 24C19.2 13.5 10.5 4.8 0 4.8V0c13.2 0 24 10.8 24 24h-4.8zm-16-6.6a3.3 3.3 0 1 1 0 6.6 3.3 3.3 0 0 1 0-6.6zM16 24h-4.7c0-6.2-5-11.2-11.2-11.2V8A16 16 0 0 1 16 24z"/></svg>
-              </a>
+              <Link href="/news">
+                <a id="news" className="link news-btn footer-btn" aria-label="Noticias">
+                  <svg width="28" height="28" viewBox="-5 -5 32 32" aria-hidden="true" fill="#fff"><path d="M19.2 24C19.2 13.5 10.5 4.8 0 4.8V0c13.2 0 24 10.8 24 24h-4.8zm-16-6.6a3.3 3.3 0 1 1 0 6.6 3.3 3.3 0 0 1 0-6.6zM16 24h-4.7c0-6.2-5-11.2-11.2-11.2V8A16 16 0 0 1 16 24z"/></svg>
+                </a>
+              </Link>
             </li>
           </ul>
         </nav>
       </footer>
 
-      <script dangerouslySetInnerHTML={{ __html: `
+      <Script dangerouslySetInnerHTML={{ __html: `
         window.requestIdleCallback = window.requestIdleCallback || function (cb) {
           var start = Date.now();
           return setTimeout(function () {
@@ -253,7 +263,7 @@ function Layout({ children }) {
           }
         }
       ` }} />
-      <script type="module" src="/src/js/web-components.js"></script>
+      <Script type="module" src="/src/js/web-components.js"></Script>
     </>
   )
 };
