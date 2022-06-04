@@ -92,18 +92,72 @@ async function bootApp() {
   const $search = document.querySelector('#search-collapse');
   const $searchForm = document.querySelector('#search');
 
-  const $home = document.querySelector('.home');
-  const $detail = document.querySelector('.detail');
-  const $detailContent = document.querySelector('.detail-content');
-  const $list = document.querySelector('.collection');
-  const $listContent = document.querySelector('.collection-content');
-  const $results = document.querySelector('.results');
-  const $resultsContent = document.querySelector('.results-content');
+  let $home = document.querySelector('.home');
+  if (!$home) {
+    $main.insertAdjacentHTML('beforeend', '<div class="home"><div>');
+    $home = document.querySelector('.home');
+  }
 
-  const $news = document.querySelector('.news');
-  const $newsContent = document.querySelector('.news-content');
-  const $wish = document.querySelector('.wish');
-  const $wishContent = document.querySelector('.wish-content');
+  let $wish = document.querySelector('.wish');
+  let $wishContent = document.querySelector('.wish-content');
+  if (!$wish) {
+    $main.insertAdjacentHTML('beforeend', `
+      <div class="wish list page page-fixed" hidden>
+        <notification-prompt hidden></notification-prompt>
+        <div class="wish-content page-content"></div>
+      </div>
+    `);
+    $wish = document.querySelector('.wish');
+    $wishContent = document.querySelector('.wish-content');
+  }
+
+  // let $news = document.querySelector('.news');
+  // let $newsContent = document.querySelector('.news-content');
+  // if (!$news) {
+  //   $main.insertAdjacentHTML('beforeend', `
+  //     <div class="news page page-fixed" hidden>
+  //       <div class="news-content page-content"></div>
+  //     </div>
+  //   `);
+  //   $news = document.querySelector('.news');
+  //   $newsContent = document.querySelector('.news-content');
+  // }
+
+  let $list = document.querySelector('.collection');
+  let $listContent = document.querySelector('.collection-content');
+  if (!$list) {
+    $main.insertAdjacentHTML('beforeend', `
+      <div class="collection list page" hidden>
+        <div class="collection-content page-content"></div>
+      </div>
+    `);
+    $list = document.querySelector('.collection');
+    $listContent = document.querySelector('.collection-content');
+  }
+
+  let $results = document.querySelector('.results');
+  let $resultsContent = document.querySelector('.results-content');
+  if (!$results) {
+    $main.insertAdjacentHTML('beforeend', `
+      <div class="results list page" hidden>
+        <div class="results-content page-content"></div>
+      </div>
+    `);
+    $results = document.querySelector('.results');
+    $resultsContent = document.querySelector('.results-content');
+  }
+
+  let $detail = document.querySelector('.detail');
+  let $detailContent = document.querySelector('.detail-content');
+  if (!$detail) {
+    $main.insertAdjacentHTML('beforeend', `
+      <div class="detail page" hidden>
+        <div class="detail-content page-content"></div>
+      </div>
+    `);
+    $detail = document.querySelector('.detail');
+    $detailContent = document.querySelector('.detail-content');
+  }
 
   let $currentPage = null;
   let $prevPage = null;
@@ -230,7 +284,7 @@ async function bootApp() {
       showPage(eve.state.page);
 
     } else if (eve.state.page === 'news') {
-      showPage(eve.state.page);
+      // showPage(eve.state.page);
 
     } else if (eve.state.page === 'collection') {
       if ($currentPage) {
@@ -331,31 +385,31 @@ async function bootApp() {
       }
     }
 
-    if (page === 'news') {
-      $home.setAttribute('hidden', true);
+    // if (page === 'news') {
+    //   $home.setAttribute('hidden', true);
 
-      requestIdleCallback(() => {
-        $search.hide();
-        $installBtn.hide();
-        $pageBack.hide();
-      });
+    //   requestIdleCallback(() => {
+    //     $search.hide();
+    //     $installBtn.hide();
+    //     $pageBack.hide();
+    //   });
 
-      if ($prevPage) {
-        $prevPage.setAttribute('hidden', true);
-        $prevPage.classList.remove('page-on');
-      }
+    //   if ($prevPage) {
+    //     $prevPage.setAttribute('hidden', true);
+    //     $prevPage.classList.remove('page-on');
+    //   }
 
-      $currentPage = $news;
-      $currentPageContent = $newsContent;
-      $currentPageContent.innerHTML = '<h2>Noticias recientes</h2>';
+    //   $currentPage = $news;
+    //   $currentPageContent = $newsContent;
+    //   $currentPageContent.innerHTML = '<h2>Noticias recientes</h2>';
 
-      $loading.show();
-      const news = await fetch(getXboxNewsURL()).then(res => res.json());
-      news.map((n) => requestIdleCallback(() => {
-        $currentPageContent.insertAdjacentHTML('beforeend', newsTemplate(n));
-      }));
-      $loading.hide();
-    }
+    //   $loading.show();
+    //   const news = await fetch(getXboxNewsURL()).then(res => res.json());
+    //   news.map((n) => requestIdleCallback(() => {
+    //     $currentPageContent.insertAdjacentHTML('beforeend', newsTemplate(n));
+    //   }));
+    //   $loading.hide();
+    // }
 
     if (page === 'game') {
       const gameId = id.split('_')[1];
@@ -537,11 +591,7 @@ async function bootApp() {
   }
 
   function loadHomePage() {
-    const preloadLCP = sections[0].list[0];
-    const lcp = preloadLCP.images.titledheroart ?
-      (preloadLCP.images.titledheroart.url || preloadLCP.images.titledheroart[0].url)
-      : preloadLCP.images.screenshot[0].url;
-    document.querySelector('#preloadLCP').href = lcp + '?w=630';
+    if ($home.innerHTML !== '') { return; }
 
     $home.removeAttribute('hidden');
     sections.forEach((section, index) => {
@@ -619,7 +669,7 @@ async function bootApp() {
       showPage('wishlist');
       break;
     case 'news':
-      showPage('news');
+      // showPage('news');
       break;
     case 'game':
       showPage('game', id);

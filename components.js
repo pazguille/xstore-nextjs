@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 import {
   convertDollar,
   slugify,
@@ -10,9 +8,7 @@ export function SectionTemplate({ section }) {
     <section>
       <h2>{section.title}</h2>
       <GameListTemplate section={section} />
-      <Link href={`/collection/${section.type}`} >
-        <a className="see-all link" id={`collection-${section.type}`} aria-label={`Ver el listado de ${section.title}`}>Ver todos</a>
-      </Link>
+      <a href={`/collection/${section.type}`} className="see-all link" id={`collection-${section.type}`} aria-label={`Ver el listado de ${section.title}`}>Ver todos</a>
     </section>
   );
 }
@@ -57,9 +53,7 @@ export function GameInfoTemplate({ game }) {
   return (
     <div>
       <h3 className="game-title">
-        <Link href={`/game/${slugify(game.title)}_${game.id}`}>
-          <a id={`detail-${game.id}`} className="link">{game.title}</a>
-        </Link>
+        <a href={`/game/${slugify(game.title)}_${game.id}`} id={`detail-${game.id}`} className="link">{game.title}</a>
       </h3>
       <p className="game-by">by {game.developer || game.publisher}</p>
       {game.game_pass && <img className="game-pass" src="/src/assets/game-pass.png" width="60px" height="11px" alt="Disponible en Game Pass" />}

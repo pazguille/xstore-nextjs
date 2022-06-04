@@ -63,7 +63,7 @@ export default function Home({ sections, lcp }) {
   return (
     <>
       <Head>
-        <link rel="preload" as="image" href={lcp} />
+        <link rel="preload" as="image" href={lcp} fetchpriority="high" />
       </Head>
       <div className="home">
         {sections.map((section, index) => (
