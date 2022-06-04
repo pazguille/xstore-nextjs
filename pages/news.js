@@ -19,8 +19,8 @@ export default function News({ news }) {
       <div className="news page page-fixed page-on">
         <div className="news-content page-content">
           <h2>Noticias recientes</h2>
-          {news.map(n => (
-            <NewsTemplate news={n} />
+          {news.map((n, i) => (
+            <NewsTemplate news={n} key={i}/>
           ))}
         </div>
       </div>
