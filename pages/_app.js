@@ -209,7 +209,7 @@ function Layout({ children }) {
         </nav>
       </footer>
 
-      <Script dangerouslySetInnerHTML={{ __html: `
+      <Script id="inline-script" dangerouslySetInnerHTML={{ __html: `
         window.requestIdleCallback = window.requestIdleCallback || function (cb) {
           var start = Date.now();
           return setTimeout(function () {

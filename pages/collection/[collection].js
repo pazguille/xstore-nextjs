@@ -33,7 +33,7 @@ export default function Collection({ games, collection }) {
         <div className="collection-content page-content">
           <h2>{collection}</h2>
           {games.map((game, index) => (
-            <GameCardTemplate game={game} />
+            <GameCardTemplate game={game} key={index} />
           ))}
         </div>
       </div>
