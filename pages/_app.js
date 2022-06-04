@@ -70,13 +70,13 @@ function Layout({ children }) {
 
         <link rel="prefetch" href="/news" />
 
-        <link rel="preload" as="fetch" href="https://www.dolarsi.com/api/api.php?type=valoresprincipales" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=new&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=deals&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=coming&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=best&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=free&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=most&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://www.dolarsi.com/api/api.php?type=valoresprincipales" crossOrigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=new&skipitems=0" crossOrigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=deals&skipitems=0" crossOrigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=coming&skipitems=0" crossOrigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=best&skipitems=0" crossOrigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=free&skipitems=0" crossOrigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=most&skipitems=0" crossOrigin="anonymous" />
 
         <link rel="shortcut icon" href="/src/assets/favicon.png" />
         <link rel="apple-touch-icon" href="/src/assets/favicon.png" />
