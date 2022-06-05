@@ -1,45 +1,5 @@
 // import Router, { useRouter } from 'next/router'
 import Head from 'next/head';
-import Script from 'next/script';
-
-// const ROUTES_TO_RETAIN = [
-//   '/cycle',
-// ];
-
-// Router.onRouteChangeStart = (url, req) => {
-//   if (url === '/cycle') {
-//     document.querySelector('.muna-loader-box').classList.add('page-right');
-//   }
-
-//   document.querySelector('.muna-loader-box').removeAttribute('hidden');
-//   requestIdleCallback(() => {
-//     document.querySelector('.muna-loader-box').classList.add('page-on');
-//   });
-// };
-
-// Router.onRouteChangeComplete = () => {
-//   document.querySelector('.muna-loader-box').classList.add('page-off');
-//   setTimeout(() => {
-//     requestIdleCallback(() => {
-//       document.querySelector('.muna-loader-box').setAttribute('hidden', true);
-//       document.querySelector('.muna-loader-box').classList.remove('page-on');
-//       document.querySelector('.muna-loader-box').classList.remove('page-off');
-//       document.querySelector('.muna-loader-box').classList.remove('page-right');
-//     });
-//   }, 300);
-// };
-
-// Router.onRouteChangeError = () => {
-//   document.querySelector('.muna-loader-box').classList.add('page-off');
-//   setTimeout(() => {
-//     requestIdleCallback(() => {
-//       document.querySelector('.muna-loader-box').setAttribute('hidden', true);
-//       document.querySelector('.muna-loader-box').classList.remove('page-on');
-//       document.querySelector('.muna-loader-box').classList.remove('page-off');
-//       document.querySelector('.muna-loader-box').classList.remove('page-right');
-//     });
-//   }, 300);
-// };
 
 function Layout({ children }) {
   return (
@@ -54,21 +14,18 @@ function Layout({ children }) {
 
         <link rel="stylesheet" href="/src/styles.css" />
 
-        <link id="preloadLCP" rel="preload" as="image" />
+        <link id="preloadLCP" rel="preload" fetchpriority="high" as="image" />
 
         <link rel="preconnect" href="https://store-images.s-microsoft.com" />
-        {/* <link rel="preconnect" href="https://www.dolarsi.com" />
+        <link rel="preconnect" href="https://media.rawg.io/" />
         <link rel="preconnect" href="https://api.xstoregames.com" />
-        <link rel="preconnect" href="https://media.rawg.io/" /> */}
+        <link rel="preconnect" href="https://www.dolarsi.com" />
 
-        <link rel="modulepreload" fetchpriority="low" href="/src/js/web-components.js" />
-        <link rel="modulepreload" fetchpriority="low" href="/src/js/utils.js" />
-        <link rel="modulepreload" fetchpriority="low" href="/src/js/templates.js" />
-        <link rel="modulepreload" fetchpriority="low" href="/src/js/app.js" />
-        <link rel="modulepreload" fetchpriority="low" href="/src/js/swipes.js" />
-
-
-        <link rel="prefetch" href="/news" />
+        <link rel="modulepreload" href="/src/js/web-components.js" />
+        <link rel="modulepreload" href="/src/js/utils.js" />
+        <link rel="modulepreload" href="/src/js/templates.js" />
+        <link rel="modulepreload" href="/src/js/app.js" />
+        <link rel="modulepreload" href="/src/js/swipes.js" />
 
         <link rel="preload" as="fetch" href="https://www.dolarsi.com/api/api.php?type=valoresprincipales" crossOrigin="anonymous" />
         <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=new&skipitems=0" crossOrigin="anonymous" />

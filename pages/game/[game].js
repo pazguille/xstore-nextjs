@@ -41,7 +41,7 @@ export default function Detail({ game, lcp }) {
       <Head>
         <title>{`${game.title} | XStore`}</title>
         <meta name="description" content={`${game.title}: ${game.description.split('.')[0].replace(/\n/gi, '')}.`} />
-        <link rel="preload" as="image" href={lcp} />
+        <link rel="preload" as="image" href={lcp} fetchpriority="high" />
       </Head>
       <div className="detail page page-on">
         <div className="detail-content page-content">
